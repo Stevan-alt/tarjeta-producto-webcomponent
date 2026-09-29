@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo - Web Component TarjetaProducto</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="demo">
+    <h1>Catálogo de Productos</h1>
+    <p>Ejemplo de reutilización del Web Component &lt;tarjeta-producto&gt;</p>
+  </header>
+
+  <section id="contenedor-tarjetas">
+    <!-- Uso 1 -->
+    <tarjeta-producto
+      imagen="assets/producto1.jpg"
+      titulo="Audífonos Inalámbricos"
+      descripcion="Bluetooth 5.0, cancelación de ruido y 20h de batería."
+      precio="129000">
+    </tarjeta-producto>
+
+    <!-- Uso 2 -->
+    <tarjeta-producto
+      imagen="assets/producto2.jpg"
+      titulo="Teclado Mecánico RGB"
+      descripcion="Switches rojos, retroiluminación RGB y diseño compacto."
+      precio="249900">
+    </tarjeta-producto>
+
+    <!-- Uso 3 -->
+    <tarjeta-producto
+      imagen="assets/producto3.jpg"
+      titulo="Mouse Ergonómico"
+      descripcion="Sensor óptico de alta precisión, ideal para uso prolongado."
+      precio="89900">
+    </tarjeta-producto>
+  </section>
+
+  <div id="log-eventos">Esperando eventos del componente...</div>
+
+  <script src="js/tarjeta-producto.js"></script>
+  <script>
+    const log = document.getElementById("log-eventos");
+
+    document.addEventListener("agregar-carrito", (e) => {
+      log.textContent =
+        `[agregar-carrito] "${e.detail.titulo}" agregado al carrito por $${e.detail.precio}`;
+    });
+
+    document.addEventListener("ver-detalle", (e) => {
+      log.textContent = `[ver-detalle] Viendo detalle de "${e.detail.titulo}"`;
+    });
+  </script>
+
+</body>
+</html>
