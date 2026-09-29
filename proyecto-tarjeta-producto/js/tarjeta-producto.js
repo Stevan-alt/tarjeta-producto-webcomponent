@@ -44,7 +44,7 @@ class TarjetaProducto extends HTMLElement {
         precio: this.getAttribute("precio"),
       },
       bubbles: true,
-      composed: true, // permite que el evento cruce el límite del Shadow DOM
+      composed: true,
     });
     this.dispatchEvent(evento);
   }
